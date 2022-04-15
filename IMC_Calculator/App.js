@@ -1,24 +1,12 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, TextInput } from "react-native";
+import { Login } from "./components/LoginPage/login";
 
 export default function App() {
     return (
         <View style={styles.container}>
-            <StatusBar style="auto" />
-            <View style={styles.inputContainerLogin}>
-                <Text style={styles.text}>Login:</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Digite aqui seu nome"
-                />
-            </View>
-            <View style={styles.inputContainerPassword}>
-                <Text style={styles.text}>Senha:</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Digite aqui sua senha"
-                />
-            </View>
+            <StatusBar style="light" />
+            <Login />
         </View>
     );
 }
@@ -26,10 +14,11 @@ export default function App() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "green",
+        backgroundColor: "green", //"#242424",
         alignItems: "center",
         justifyContent: "center",
     },
+    /*
     text: {
         color: "#000",
         fontSize: 20,
@@ -64,4 +53,5 @@ const styles = StyleSheet.create({
         display: "flex",
         flexDirection: "row",
     },
+    */
 });
