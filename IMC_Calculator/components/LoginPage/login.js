@@ -5,7 +5,6 @@ import {
     Text,
     View,
     TextInput,
-    Button,
     Pressable,
     Alert,
     Switch,
@@ -67,7 +66,6 @@ export function Login() {
                 <Pressable
                     style={styles.button}
                     onPress={() => {
-                        //Alert.alert("Login efetuado com sucesso!");
                         if (name == nome) {
                             if (password == senha) {
                                 Alert.alert("Login efetuado com sucesso!");
@@ -75,7 +73,6 @@ export function Login() {
                                 setPassword("");
                                 setIsLoading(true);
                             } else {
-                                //Alert.alert("Login ou senha incorretos!");
                                 Alert.alert("Senha incorreta!");
                                 setIsLoading(false);
                             }
