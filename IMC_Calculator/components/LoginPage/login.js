@@ -9,6 +9,7 @@ import {
     Pressable,
     Alert,
     Switch,
+    ActivityIndicator,
 } from "react-native";
 
 import image from "../../components/imgs/Avatar_Login.png";
@@ -17,6 +18,12 @@ import image from "../../components/imgs/Avatar_Login.png";
 export function Login() {
     const [isEnabled, setIsEnabled] = useState(false);
     const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
+    const [name, setName] = useState("");
+    const [password, setPassword] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
+
+    const nome = "admin";
+    const senha = "admin";
 
     return (
         <View style={styles.container}>
@@ -33,6 +40,9 @@ export function Login() {
                 <TextInput
                     style={styles.input}
                     placeholder="Digite aqui seu nome"
+                    onChangeText={(text) => setName(text)}
+                    value={name}
+                    id="name"
                 />
             </View>
             <View style={styles.inputContainerPassword}>
@@ -41,6 +51,9 @@ export function Login() {
                     secureTextEntry={true}
                     style={styles.input}
                     placeholder="Digite aqui sua senha"
+                    onChangeText={(text) => setPassword(text)}
+                    value={password}
+                    id="password"
                 />
             </View>
             <View style={styles.footer}>
@@ -53,11 +66,34 @@ export function Login() {
                 />
                 <Pressable
                     style={styles.button}
-                    onPress={() => Alert.alert("Login efetuado com sucesso!")}
+                    onPress={() => {
+                        //Alert.alert("Login efetuado com sucesso!");
+                        if (name == nome) {
+                            if (password == senha) {
+                                Alert.alert("Login efetuado com sucesso!");
+                                setName("");
+                                setPassword("");
+                                setIsLoading(true);
+                            } else {
+                                //Alert.alert("Login ou senha incorretos!");
+                                Alert.alert("Senha incorreta!");
+                                setIsLoading(false);
+                            }
+                        } else {
+                            Alert.alert("Login incorreto!");
+                            setIsLoading(false);
+                        }
+                    }}
                 >
                     <Text style={styles.buttonText}>{"Entrar"}</Text>
                 </Pressable>
             </View>
+            <ActivityIndicator
+                size="large"
+                color="#00ff00"
+                animating={isLoading}
+                //hidesWhenStopped={true}
+            />
         </View>
     );
 }
