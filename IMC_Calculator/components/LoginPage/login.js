@@ -11,10 +11,11 @@ import {
     ActivityIndicator,
 } from "react-native";
 
-import image from "../../components/imgs/Avatar_Login.png";
+//import backgroundImage from "../../components/imgs/wallpaper/fundo_verde_01.jpg";
+import image from "../../components/imgs/avatar/Avatar_Login.png";
 //const image = { uri: "https://reactjs.org/logo-og.png" };
 
-export function Login() {
+export function Login(logado) {
     const [isEnabled, setIsEnabled] = useState(false);
     const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
     const [name, setName] = useState("");
@@ -72,9 +73,11 @@ export function Login() {
                                 setName("");
                                 setPassword("");
                                 setIsLoading(true);
+                                logado = true;
                             } else {
                                 Alert.alert("Senha incorreta!");
                                 setIsLoading(false);
+                                logado = false;
                             }
                         } else {
                             Alert.alert("Login incorreto!");
